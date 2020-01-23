@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>IMC</title>
+	<style type="text/css">
+		body{
+			font-family: Comic Sans MS;
+		}
+	</style>
+</head>
+<body>
+
+		<header class="cabecalho">
+			<img id="img" src="logo.png">
+			<h1 style="position: absolute; top: 10px; left: 150px; color: rgb(0,191,255);">Mais saúde</h1>
+		</header><hr>
+		<div id="txt">
+			O IMC (Índice de Massa Corporal) é uma ferramenta usada para detectar casos de obesidade ou desnutrição,<br> principalmente em estudos que envolvem grandes populações. De acordo com o endocrinologista<br> Mario Kedhi Carra, membro da Associação Brasileira para o Estudo da Obesidade e da Síndrome Metabólica (ABESO), <br>essa é uma medida universal de classificação de obesidade, validada pela Organização Mundial da Saúde. <br>
+			<h3 style="color: rgb(0,191,255);">Cálculo IMC</h3><br>
+			<form id="form" >
+				<input type="text" id="nome" placeholder="nome" >
+				<input type="text" id="peso" placeholder="peso(Kg)">
+				<input type="text" id="alt" placeholder="Altura">
+				<input type="radio" name="sexo" id="masc" checked=""> masculino
+				<input type="radio" name="sexo" id="fem"> feminino
+				<br><br>
+				<button type="submit" value="calcular"> calcular</button>
+			</form>
+			<div id="res"></div>
+		</div>
+	<script>
+		var txt = document.getElementById('txt')
+		txt.style.textAlign="center"
+		txt.style.position="absolute"
+		txt.style.top ="150px"
+		txt.style.left ="250px"
+		var img = document.getElementById('img')
+		img.style.width =" 100px"
+		img.style.height =" 100px"
+
+	var form = document.getElementById('form').addEventListener('submit',calc)
+
+	function calc(e){
+	var nome = document.getElementById('nome').value
+	var peso = parseFloat(document.getElementById('peso').value)
+	var alt = parseFloat(document.getElementById('alt').value)
+	var masc = document.getElementById('masc').checked
+	var fem = document.getElementById('fem').checked
+	var txt1 = document.getElementById('res')
+
+	var imc 
+	imc = peso/(alt*alt)
+if(masc === true){
+	if(imc < 20){
+		txt1.innerHTML = nome + ' Seu IMC ' + Math.round(imc) + ' Considerado abaixo do normal'
+	}
+	else if(imc >=20 && imc < 25){
+		txt1.innerHTML = nome + ' Seu  IMC ' + Math.round(imc) + ' Considerado  normal'
+	}
+	else if(imc >25 && imc <30){
+		txt1.innerHTML = nome + ' Seu  IMC ' + Math.round(imc) + ' Considerado Obesidade Leve'
+
+	}
+	else if(imc >30 && imc < 40){
+		txt1.innerHTML = nome + ' Seu  IMC ' + Math.round(imc) + ' Considerado Obesidade Moderada'
+
+	} 
+	else if( imc > 43){
+		txt1.innerHTML = nome + ' Seu  IMC ' + Math.round(imc) + ' Considerado Obesidade Morbida'
+
+	}
+} else if(fem === true){
+	if(imc < 19){
+		txt1.innerHTML = nome + ' Seu  IMC ' + Math.round(imc) + ' Considerado abaixo do normal'
+	}
+	else if(imc >=19 && imc < 24){
+		txt1.innerHTML = nome + ' Seu  IMC ' + Math.round(imc) + ' Considerado  normal'
+	}
+	else if(imc >24 && imc <29){
+		txt1.innerHTML = nome + ' Seu  IMC ' + Math.round(imc) + ' Considerado Obesidade Leve'
+
+	}
+	else if(imc >29 && imc < 38.9){
+		txt1.innerHTML = nome + ' Seu  IMC ' + Math.round(imc) + ' Considerado Obesidade Moderada'
+
+	} 
+	else if( imc > 38){
+		txt1.innerHTML = nome + ' Seu  IMC ' + Math.round(imc) + ' Considerado Obesidade Morbida'
+
+	}
+}
+
+	e.preventDefault()
+
+	}
+	
+
+	</script>
+</body>
+</html>
